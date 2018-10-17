@@ -23,4 +23,3 @@ public class RunTests {
     System.exit(failed);
   }
 }
-
