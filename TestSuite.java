@@ -36,5 +36,4 @@ public class TestSuite {
     boolean exists = f.exists() && f.isFile();
     assert (exists);
   }
-
 }
