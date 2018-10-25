@@ -16,7 +16,7 @@ public class Image {
     this.imageData = new byte[numberOfBytes];
   }
 
-  // set single pixel to index value of RGB
+  // --- set single pixel to index value of RGB
   public void set(int x, int y, int val) {
     if (x > this.width && y > this.height) return;
     int positionFirstIndex = (this.width * y + x) * 3;
@@ -25,7 +25,11 @@ public class Image {
     this.imageData[positionFirstIndex + 2] = (byte)(val >> 0);
   }
 
-  // write image data to file as image format P3 or P6
+  // --- write image data to file as image format P3 or P6
+  // accessing pixel in array: https://gamedev.stackexchange.com/questions/75661/java-single-array-best-choice-for-accessing-pixels-for-manipulation
+  // input & output: https://github.com/abeppu/learning-with-images/blob/master/src/PPMReadWrite.java
+  // write file: https://stackoverflow.com/questions/12557052/write-csv-file-column-by-column
+
   public void  write( String filename) throws IOException{
     BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(filename)));
     // write header
