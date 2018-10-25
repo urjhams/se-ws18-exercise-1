@@ -18,14 +18,12 @@ public class Image {
   }
 
   // set single pixel to index value of RGB
-  //TODO: rework on this mathod
   public void set(int x, int y, int val) {
-
-    for(int i = 0; i < height; i++){
-      for (int j = 0; j< width; j++){
-          imageData [x + y * width] = (byte) val;
-      }
-    }
+    if (x > this.width && y > this.height) { return; }
+    int positionFirstIndex = this.width * ((y == 0) ? 0 : (y - 1)) + x;
+    this.imageData[positionFirstIndex] = (byte)(val >> 16);
+    this.imageData[positionFirstIndex + 1] = (byte)(val >> 8);
+    this.imageData[positionFirstIndex + 2] = (byte)(val >> 0);
   }
 
   // write image data to file as image format P3 or P6
