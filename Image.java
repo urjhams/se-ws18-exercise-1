@@ -14,14 +14,13 @@ public class Image {
     int numberOfPixel = width * height;
     int numberOfBytes = numberOfPixel * 3 ; // because 24 bit image -> 3 bytes per pixel
     this.imageData = new byte[numberOfBytes];
-
   }
 
   // set single pixel to index value of RGB
   public void set(int x, int y, int val) {
-    if (x > this.width && y > this.height) { return; }
-    int positionFirstIndex = this.width * ((y == 0) ? 0 : (y - 1)) + x;
-    this.imageData[positionFirstIndex] = (byte)(val >> 16);
+    if (x > this.width && y > this.height) return;
+    int positionFirstIndex = (this.width * y + x) * 3;
+    this.imageData[positionFirstIndex ] = (byte)(val >> 16);
     this.imageData[positionFirstIndex + 1] = (byte)(val >> 8);
     this.imageData[positionFirstIndex + 2] = (byte)(val >> 0);
   }
@@ -48,6 +47,4 @@ public class Image {
     writer.flush();
     writer.close();
   }
-
-
 }
