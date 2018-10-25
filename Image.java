@@ -16,8 +16,9 @@ public class Image {
     this.imageData = new byte[numberOfBytes];
 
   }
-  // set single pixel to index value of RGB
 
+  // set single pixel to index value of RGB
+  //TODO: rework on this mathod
   public void set(int x, int y, int val) {
 
     for(int i = 0; i < height; i++){
@@ -25,11 +26,9 @@ public class Image {
           imageData [x + y * width] = (byte) val;
       }
     }
-
   }
 
   // write image data to file as image format P3 or P6
-
   public void  write( String filename) throws IOException{
     BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(filename)));
     // write header
